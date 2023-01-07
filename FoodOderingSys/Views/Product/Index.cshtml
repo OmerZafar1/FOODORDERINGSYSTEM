@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FoodOderingSys.Models.ProductTbl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add Product", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryTbl.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryTbl.CategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
+        </td>
+    </tr>
+}
+
+</table>

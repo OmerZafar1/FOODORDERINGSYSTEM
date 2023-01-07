@@ -1,0 +1,72 @@
+﻿@model IEnumerable<FoodOderingSys.Models.EmployeeTbl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<style>
+    .flex-container {
+        display: flex;
+        justify-content: center;
+        background-color: DodgerBlue;
+    }
+
+        .flex-container > div {
+            background-color: #f1f1f1;
+            width: 100px;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+        }
+</style>
+
+    <div class="flex-container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <p>
+        @Html.ActionLink("Add Employee Detail ", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeContactNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeDesignation)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeContactNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeDesignation)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeInfoID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeInfoID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeInfoID })
+                </td>
+            </tr>
+        }
+
+    </table>

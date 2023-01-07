@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a786c2f7c5ed429b81428a15828c2209" Name="Diagram1">
+        <EntityTypeShape EntityType="FoodOrderingProjectModel1.EmployeeLogin" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrderingProjectModel1.EmployeeTbl" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="FoodOrderingProjectModel1.FK__EmployeeL__Emplo__38996AB5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

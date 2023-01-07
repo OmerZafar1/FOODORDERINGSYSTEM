@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FoodOrderingProjectModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EmployeeLogin">
+    <Key>
+      <PropertyRef Name="EmployeeLoginID" />
+    </Key>
+    <Property Name="EmployeeLoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeePassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeInfoID" Type="Int32" />
+    <NavigationProperty Name="EmployeeTbl" Relationship="Self.FK__EmployeeL__Emplo__38996AB5" FromRole="EmployeeLogin" ToRole="EmployeeTbl" />
+  </EntityType>
+  <EntityType Name="EmployeeTbl">
+    <Key>
+      <PropertyRef Name="EmployeeInfoID" />
+    </Key>
+    <Property Name="EmployeeInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeContactNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeDesignation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EmployeeLogins" Relationship="Self.FK__EmployeeL__Emplo__38996AB5" FromRole="EmployeeTbl" ToRole="EmployeeLogin" />
+  </EntityType>
+  <Association Name="FK__EmployeeL__Emplo__38996AB5">
+    <End Role="EmployeeTbl" Type="Self.EmployeeTbl" Multiplicity="0..1" />
+    <End Role="EmployeeLogin" Type="Self.EmployeeLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeTbl">
+        <PropertyRef Name="EmployeeInfoID" />
+      </Principal>
+      <Dependent Role="EmployeeLogin">
+        <PropertyRef Name="EmployeeInfoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FoodOrderingProjectEntitiesEmp" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EmployeeLogins" EntityType="Self.EmployeeLogin" />
+    <EntitySet Name="EmployeeTbls" EntityType="Self.EmployeeTbl" />
+    <AssociationSet Name="FK__EmployeeL__Emplo__38996AB5" Association="Self.FK__EmployeeL__Emplo__38996AB5">
+      <End Role="EmployeeTbl" EntitySet="EmployeeTbls" />
+      <End Role="EmployeeLogin" EntitySet="EmployeeLogins" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

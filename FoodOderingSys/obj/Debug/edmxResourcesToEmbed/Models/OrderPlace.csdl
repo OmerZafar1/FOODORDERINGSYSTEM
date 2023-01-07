@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FoodOrderingProjectModel4" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="OrderTbl">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Precision="0" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="Qnty" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="ProductPrice" Type="Int32" />
+    <Property Name="TotalBill" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="FoodOrderingProjectEntitiesOP" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OrderTbls" EntityType="Self.OrderTbl" />
+  </EntityContainer>
+</Schema>

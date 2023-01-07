@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1c3460fdd6044e66be2cd40946669fcd" Name="Diagram1">
+        <EntityTypeShape EntityType="FoodOrderingProjectModel2.CategoryTbl" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrderingProjectModel2.ProductTbl" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="FoodOrderingProjectModel2.FK__ProductTb__Categ__3D5E1FD2" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FoodOrderingProjectModel2.CustomerTbl" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="FoodOrderingProjectModel2.OrderTbl" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="FoodOrderingProjectModel2.FK__OrderTbl__Custom__4316F928" />
+        <AssociationConnector Association="FoodOrderingProjectModel2.FK__OrderTbl__Produc__48CFD27E" />
+        <AssociationConnector Association="FoodOrderingProjectModel2.FK__OrderTbl__Produc__4BAC3F29" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

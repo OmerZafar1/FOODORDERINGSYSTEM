@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FoodOrderingProjectModel3StoreContainer" CdmEntityContainer="FoodOrderingProjectEntities3">
+    <EntitySetMapping Name="CategoryTbls">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel3.CategoryTbl">
+        <MappingFragment StoreEntitySet="CategoryTbl">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerTbls">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel3.CustomerTbl">
+        <MappingFragment StoreEntitySet="CustomerTbl">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="CustomerPhoneNo" ColumnName="CustomerPhoneNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeLogins">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel3.EmployeeLogin">
+        <MappingFragment StoreEntitySet="EmployeeLogin">
+          <ScalarProperty Name="EmployeeLoginID" ColumnName="EmployeeLoginID" />
+          <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
+          <ScalarProperty Name="EmployeePassword" ColumnName="EmployeePassword" />
+          <ScalarProperty Name="EmployeeInfoID" ColumnName="EmployeeInfoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeTbls">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel3.EmployeeTbl">
+        <MappingFragment StoreEntitySet="EmployeeTbl">
+          <ScalarProperty Name="EmployeeInfoID" ColumnName="EmployeeInfoID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeeAddress" ColumnName="EmployeeAddress" />
+          <ScalarProperty Name="EmployeeContactNo" ColumnName="EmployeeContactNo" />
+          <ScalarProperty Name="EmployeeDesignation" ColumnName="EmployeeDesignation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetailTbls">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel3.OrderDetailTbl">
+        <MappingFragment StoreEntitySet="OrderDetailTbl">
+          <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderTbls">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel3.OrderTbl">
+        <MappingFragment StoreEntitySet="OrderTbl">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnerLoginTbls">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel3.OwnerLoginTbl">
+        <MappingFragment StoreEntitySet="OwnerLoginTbl">
+          <ScalarProperty Name="OwnerLoginID" ColumnName="OwnerLoginID" />
+          <ScalarProperty Name="Ownername" ColumnName="Ownername" />
+          <ScalarProperty Name="OwnerPassword" ColumnName="OwnerPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductTbls">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel3.ProductTbl">
+        <MappingFragment StoreEntitySet="ProductTbl">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

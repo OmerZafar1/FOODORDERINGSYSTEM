@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FoodOrderingProjectModel1StoreContainer" CdmEntityContainer="FoodOrderingProjectEntitiesEmp">
+    <EntitySetMapping Name="EmployeeLogins">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel1.EmployeeLogin">
+        <MappingFragment StoreEntitySet="EmployeeLogin">
+          <ScalarProperty Name="EmployeeLoginID" ColumnName="EmployeeLoginID" />
+          <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
+          <ScalarProperty Name="EmployeePassword" ColumnName="EmployeePassword" />
+          <ScalarProperty Name="EmployeeInfoID" ColumnName="EmployeeInfoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeTbls">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel1.EmployeeTbl">
+        <MappingFragment StoreEntitySet="EmployeeTbl">
+          <ScalarProperty Name="EmployeeInfoID" ColumnName="EmployeeInfoID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeeAddress" ColumnName="EmployeeAddress" />
+          <ScalarProperty Name="EmployeeContactNo" ColumnName="EmployeeContactNo" />
+          <ScalarProperty Name="EmployeeDesignation" ColumnName="EmployeeDesignation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

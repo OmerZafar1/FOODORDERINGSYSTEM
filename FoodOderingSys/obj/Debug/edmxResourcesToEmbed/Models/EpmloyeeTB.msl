@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FoodOrderingProjectModel1StoreContainer" CdmEntityContainer="FoodOrderingProjectEntities1">
+    <EntitySetMapping Name="EmployeeTbls">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel1.EmployeeTbl">
+        <MappingFragment StoreEntitySet="EmployeeTbl">
+          <ScalarProperty Name="EmployeeInfoID" ColumnName="EmployeeInfoID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeeAddress" ColumnName="EmployeeAddress" />
+          <ScalarProperty Name="EmployeeContactNo" ColumnName="EmployeeContactNo" />
+          <ScalarProperty Name="EmployeeDesignation" ColumnName="EmployeeDesignation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

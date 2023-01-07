@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FoodOrderingProjectModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EmployeeLogin">
+    <Key>
+      <PropertyRef Name="EmployeeLoginID" />
+    </Key>
+    <Property Name="EmployeeLoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeEmail" Type="nvarchar" MaxLength="30" />
+    <Property Name="EmployeePassword" Type="varchar" MaxLength="30" />
+    <Property Name="EmployeeInfoID" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeTbl">
+    <Key>
+      <PropertyRef Name="EmployeeInfoID" />
+    </Key>
+    <Property Name="EmployeeInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeName" Type="varchar" MaxLength="40" />
+    <Property Name="EmployeeAddress" Type="varchar" MaxLength="50" />
+    <Property Name="EmployeeContactNo" Type="varchar" MaxLength="15" />
+    <Property Name="EmployeeDesignation" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <Association Name="FK__EmployeeL__Emplo__38996AB5">
+    <End Role="EmployeeTbl" Type="Self.EmployeeTbl" Multiplicity="0..1" />
+    <End Role="EmployeeLogin" Type="Self.EmployeeLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeTbl">
+        <PropertyRef Name="EmployeeInfoID" />
+      </Principal>
+      <Dependent Role="EmployeeLogin">
+        <PropertyRef Name="EmployeeInfoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FoodOrderingProjectModel1StoreContainer">
+    <EntitySet Name="EmployeeLogin" EntityType="Self.EmployeeLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeTbl" EntityType="Self.EmployeeTbl" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__EmployeeL__Emplo__38996AB5" Association="Self.FK__EmployeeL__Emplo__38996AB5">
+      <End Role="EmployeeTbl" EntitySet="EmployeeTbl" />
+      <End Role="EmployeeLogin" EntitySet="EmployeeLogin" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

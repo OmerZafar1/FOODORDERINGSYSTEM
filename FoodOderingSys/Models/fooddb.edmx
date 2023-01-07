@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FoodOrderingProjectModel3.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoryTbl">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="CustomerTbl">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="40" />
+          <Property Name="CustomerAddress" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerPhoneNo" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="EmployeeLogin">
+          <Key>
+            <PropertyRef Name="EmployeeLoginID" />
+          </Key>
+          <Property Name="EmployeeLoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeEmail" Type="nvarchar" MaxLength="30" />
+          <Property Name="EmployeePassword" Type="varchar" MaxLength="30" />
+          <Property Name="EmployeeInfoID" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeeTbl">
+          <Key>
+            <PropertyRef Name="EmployeeInfoID" />
+          </Key>
+          <Property Name="EmployeeInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="40" />
+          <Property Name="EmployeeAddress" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeContactNo" Type="varchar" MaxLength="15" />
+          <Property Name="EmployeeDesignation" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="OrderDetailTbl">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderTbl">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalBill" Type="int" />
+          <Property Name="OrderDate" Type="date" />
+          <Property Name="CustomerID" Type="int" />
+        </EntityType>
+        <EntityType Name="OwnerLoginTbl">
+          <Key>
+            <PropertyRef Name="OwnerLoginID" />
+          </Key>
+          <Property Name="OwnerLoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ownername" Type="varchar" MaxLength="30" />
+          <Property Name="OwnerPassword" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="ProductTbl">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="40" />
+          <Property Name="ProductPrice" Type="int" />
+          <Property Name="CategoryID" Type="int" />
+        </EntityType>
+        <Association Name="FK__EmployeeL__Emplo__38996AB5">
+          <End Role="EmployeeTbl" Type="Self.EmployeeTbl" Multiplicity="0..1" />
+          <End Role="EmployeeLogin" Type="Self.EmployeeLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTbl">
+              <PropertyRef Name="EmployeeInfoID" />
+            </Principal>
+            <Dependent Role="EmployeeLogin">
+              <PropertyRef Name="EmployeeInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Custo__46E78A0C">
+          <End Role="CustomerTbl" Type="Self.CustomerTbl" Multiplicity="0..1" />
+          <End Role="OrderDetailTbl" Type="Self.OrderDetailTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerTbl">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="OrderDetailTbl">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Order__45F365D3">
+          <End Role="OrderTbl" Type="Self.OrderTbl" Multiplicity="0..1" />
+          <End Role="OrderDetailTbl" Type="Self.OrderDetailTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderTbl">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetailTbl">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Produ__47DBAE45">
+          <End Role="ProductTbl" Type="Self.ProductTbl" Multiplicity="0..1" />
+          <End Role="OrderDetailTbl" Type="Self.OrderDetailTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductTbl">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderDetailTbl">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTbl__Custom__4316F928">
+          <End Role="CustomerTbl" Type="Self.CustomerTbl" Multiplicity="0..1" />
+          <End Role="OrderTbl" Type="Self.OrderTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerTbl">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="OrderTbl">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductTb__Categ__3D5E1FD2">
+          <End Role="CategoryTbl" Type="Self.CategoryTbl" Multiplicity="0..1" />
+          <End Role="ProductTbl" Type="Self.ProductTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTbl">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ProductTbl">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FoodOrderingProjectModel3StoreContainer">
+          <EntitySet Name="CategoryTbl" EntityType="Self.CategoryTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerTbl" EntityType="Self.CustomerTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeLogin" EntityType="Self.EmployeeLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTbl" EntityType="Self.EmployeeTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetailTbl" EntityType="Self.OrderDetailTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderTbl" EntityType="Self.OrderTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnerLoginTbl" EntityType="Self.OwnerLoginTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductTbl" EntityType="Self.ProductTbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EmployeeL__Emplo__38996AB5" Association="Self.FK__EmployeeL__Emplo__38996AB5">
+            <End Role="EmployeeTbl" EntitySet="EmployeeTbl" />
+            <End Role="EmployeeLogin" EntitySet="EmployeeLogin" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Custo__46E78A0C" Association="Self.FK__OrderDeta__Custo__46E78A0C">
+            <End Role="CustomerTbl" EntitySet="CustomerTbl" />
+            <End Role="OrderDetailTbl" EntitySet="OrderDetailTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Order__45F365D3" Association="Self.FK__OrderDeta__Order__45F365D3">
+            <End Role="OrderTbl" EntitySet="OrderTbl" />
+            <End Role="OrderDetailTbl" EntitySet="OrderDetailTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Produ__47DBAE45" Association="Self.FK__OrderDeta__Produ__47DBAE45">
+            <End Role="ProductTbl" EntitySet="ProductTbl" />
+            <End Role="OrderDetailTbl" EntitySet="OrderDetailTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTbl__Custom__4316F928" Association="Self.FK__OrderTbl__Custom__4316F928">
+            <End Role="CustomerTbl" EntitySet="CustomerTbl" />
+            <End Role="OrderTbl" EntitySet="OrderTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductTb__Categ__3D5E1FD2" Association="Self.FK__ProductTb__Categ__3D5E1FD2">
+            <End Role="CategoryTbl" EntitySet="CategoryTbl" />
+            <End Role="ProductTbl" EntitySet="ProductTbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FoodOrderingProjectModel3" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoryTbl">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductTbls" Relationship="Self.FK__ProductTb__Categ__3D5E1FD2" FromRole="CategoryTbl" ToRole="ProductTbl" />
+        </EntityType>
+        <EntityType Name="CustomerTbl">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderDetailTbls" Relationship="Self.FK__OrderDeta__Custo__46E78A0C" FromRole="CustomerTbl" ToRole="OrderDetailTbl" />
+          <NavigationProperty Name="OrderTbls" Relationship="Self.FK__OrderTbl__Custom__4316F928" FromRole="CustomerTbl" ToRole="OrderTbl" />
+        </EntityType>
+        <EntityType Name="EmployeeLogin">
+          <Key>
+            <PropertyRef Name="EmployeeLoginID" />
+          </Key>
+          <Property Name="EmployeeLoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeePassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeInfoID" Type="Int32" />
+          <NavigationProperty Name="EmployeeTbl" Relationship="Self.FK__EmployeeL__Emplo__38996AB5" FromRole="EmployeeLogin" ToRole="EmployeeTbl" />
+        </EntityType>
+        <EntityType Name="EmployeeTbl">
+          <Key>
+            <PropertyRef Name="EmployeeInfoID" />
+          </Key>
+          <Property Name="EmployeeInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeContactNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeDesignation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmployeeLogins" Relationship="Self.FK__EmployeeL__Emplo__38996AB5" FromRole="EmployeeTbl" ToRole="EmployeeLogin" />
+        </EntityType>
+        <EntityType Name="OrderDetailTbl">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <NavigationProperty Name="CustomerTbl" Relationship="Self.FK__OrderDeta__Custo__46E78A0C" FromRole="OrderDetailTbl" ToRole="CustomerTbl" />
+          <NavigationProperty Name="OrderTbl" Relationship="Self.FK__OrderDeta__Order__45F365D3" FromRole="OrderDetailTbl" ToRole="OrderTbl" />
+          <NavigationProperty Name="ProductTbl" Relationship="Self.FK__OrderDeta__Produ__47DBAE45" FromRole="OrderDetailTbl" ToRole="ProductTbl" />
+        </EntityType>
+        <EntityType Name="OrderTbl">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalBill" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="CustomerID" Type="Int32" />
+          <NavigationProperty Name="CustomerTbl" Relationship="Self.FK__OrderTbl__Custom__4316F928" FromRole="OrderTbl" ToRole="CustomerTbl" />
+          <NavigationProperty Name="OrderDetailTbls" Relationship="Self.FK__OrderDeta__Order__45F365D3" FromRole="OrderTbl" ToRole="OrderDetailTbl" />
+        </EntityType>
+        <EntityType Name="OwnerLoginTbl">
+          <Key>
+            <PropertyRef Name="OwnerLoginID" />
+          </Key>
+          <Property Name="OwnerLoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ownername" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerPassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProductTbl">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ProductPrice" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" />
+          <NavigationProperty Name="CategoryTbl" Relationship="Self.FK__ProductTb__Categ__3D5E1FD2" FromRole="ProductTbl" ToRole="CategoryTbl" />
+          <NavigationProperty Name="OrderDetailTbls" Relationship="Self.FK__OrderDeta__Produ__47DBAE45" FromRole="ProductTbl" ToRole="OrderDetailTbl" />
+        </EntityType>
+        <Association Name="FK__ProductTb__Categ__3D5E1FD2">
+          <End Role="CategoryTbl" Type="Self.CategoryTbl" Multiplicity="0..1" />
+          <End Role="ProductTbl" Type="Self.ProductTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTbl">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ProductTbl">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Custo__46E78A0C">
+          <End Role="CustomerTbl" Type="Self.CustomerTbl" Multiplicity="0..1" />
+          <End Role="OrderDetailTbl" Type="Self.OrderDetailTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerTbl">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="OrderDetailTbl">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTbl__Custom__4316F928">
+          <End Role="CustomerTbl" Type="Self.CustomerTbl" Multiplicity="0..1" />
+          <End Role="OrderTbl" Type="Self.OrderTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerTbl">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="OrderTbl">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeL__Emplo__38996AB5">
+          <End Role="EmployeeTbl" Type="Self.EmployeeTbl" Multiplicity="0..1" />
+          <End Role="EmployeeLogin" Type="Self.EmployeeLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTbl">
+              <PropertyRef Name="EmployeeInfoID" />
+            </Principal>
+            <Dependent Role="EmployeeLogin">
+              <PropertyRef Name="EmployeeInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Order__45F365D3">
+          <End Role="OrderTbl" Type="Self.OrderTbl" Multiplicity="0..1" />
+          <End Role="OrderDetailTbl" Type="Self.OrderDetailTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderTbl">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetailTbl">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Produ__47DBAE45">
+          <End Role="ProductTbl" Type="Self.ProductTbl" Multiplicity="0..1" />
+          <End Role="OrderDetailTbl" Type="Self.OrderDetailTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductTbl">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderDetailTbl">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FoodOrderingProjectEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoryTbls" EntityType="Self.CategoryTbl" />
+          <EntitySet Name="CustomerTbls" EntityType="Self.CustomerTbl" />
+          <EntitySet Name="EmployeeLogins" EntityType="Self.EmployeeLogin" />
+          <EntitySet Name="EmployeeTbls" EntityType="Self.EmployeeTbl" />
+          <EntitySet Name="OrderDetailTbls" EntityType="Self.OrderDetailTbl" />
+          <EntitySet Name="OrderTbls" EntityType="Self.OrderTbl" />
+          <EntitySet Name="OwnerLoginTbls" EntityType="Self.OwnerLoginTbl" />
+          <EntitySet Name="ProductTbls" EntityType="Self.ProductTbl" />
+          <AssociationSet Name="FK__ProductTb__Categ__3D5E1FD2" Association="Self.FK__ProductTb__Categ__3D5E1FD2">
+            <End Role="CategoryTbl" EntitySet="CategoryTbls" />
+            <End Role="ProductTbl" EntitySet="ProductTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Custo__46E78A0C" Association="Self.FK__OrderDeta__Custo__46E78A0C">
+            <End Role="CustomerTbl" EntitySet="CustomerTbls" />
+            <End Role="OrderDetailTbl" EntitySet="OrderDetailTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTbl__Custom__4316F928" Association="Self.FK__OrderTbl__Custom__4316F928">
+            <End Role="CustomerTbl" EntitySet="CustomerTbls" />
+            <End Role="OrderTbl" EntitySet="OrderTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeL__Emplo__38996AB5" Association="Self.FK__EmployeeL__Emplo__38996AB5">
+            <End Role="EmployeeTbl" EntitySet="EmployeeTbls" />
+            <End Role="EmployeeLogin" EntitySet="EmployeeLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Order__45F365D3" Association="Self.FK__OrderDeta__Order__45F365D3">
+            <End Role="OrderTbl" EntitySet="OrderTbls" />
+            <End Role="OrderDetailTbl" EntitySet="OrderDetailTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Produ__47DBAE45" Association="Self.FK__OrderDeta__Produ__47DBAE45">
+            <End Role="ProductTbl" EntitySet="ProductTbls" />
+            <End Role="OrderDetailTbl" EntitySet="OrderDetailTbls" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FoodOrderingProjectModel3StoreContainer" CdmEntityContainer="FoodOrderingProjectEntities3">
+          <EntitySetMapping Name="CategoryTbls">
+            <EntityTypeMapping TypeName="FoodOrderingProjectModel3.CategoryTbl">
+              <MappingFragment StoreEntitySet="CategoryTbl">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTbls">
+            <EntityTypeMapping TypeName="FoodOrderingProjectModel3.CustomerTbl">
+              <MappingFragment StoreEntitySet="CustomerTbl">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerPhoneNo" ColumnName="CustomerPhoneNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeLogins">
+            <EntityTypeMapping TypeName="FoodOrderingProjectModel3.EmployeeLogin">
+              <MappingFragment StoreEntitySet="EmployeeLogin">
+                <ScalarProperty Name="EmployeeLoginID" ColumnName="EmployeeLoginID" />
+                <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
+                <ScalarProperty Name="EmployeePassword" ColumnName="EmployeePassword" />
+                <ScalarProperty Name="EmployeeInfoID" ColumnName="EmployeeInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTbls">
+            <EntityTypeMapping TypeName="FoodOrderingProjectModel3.EmployeeTbl">
+              <MappingFragment StoreEntitySet="EmployeeTbl">
+                <ScalarProperty Name="EmployeeInfoID" ColumnName="EmployeeInfoID" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeAddress" ColumnName="EmployeeAddress" />
+                <ScalarProperty Name="EmployeeContactNo" ColumnName="EmployeeContactNo" />
+                <ScalarProperty Name="EmployeeDesignation" ColumnName="EmployeeDesignation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetailTbls">
+            <EntityTypeMapping TypeName="FoodOrderingProjectModel3.OrderDetailTbl">
+              <MappingFragment StoreEntitySet="OrderDetailTbl">
+                <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderTbls">
+            <EntityTypeMapping TypeName="FoodOrderingProjectModel3.OrderTbl">
+              <MappingFragment StoreEntitySet="OrderTbl">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerLoginTbls">
+            <EntityTypeMapping TypeName="FoodOrderingProjectModel3.OwnerLoginTbl">
+              <MappingFragment StoreEntitySet="OwnerLoginTbl">
+                <ScalarProperty Name="OwnerLoginID" ColumnName="OwnerLoginID" />
+                <ScalarProperty Name="Ownername" ColumnName="Ownername" />
+                <ScalarProperty Name="OwnerPassword" ColumnName="OwnerPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTbls">
+            <EntityTypeMapping TypeName="FoodOrderingProjectModel3.ProductTbl">
+              <MappingFragment StoreEntitySet="ProductTbl">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

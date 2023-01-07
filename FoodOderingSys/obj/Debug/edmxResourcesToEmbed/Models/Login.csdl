@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FoodOrderingProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="OwnerLoginTbl">
+    <Key>
+      <PropertyRef Name="OwnerLoginID" />
+    </Key>
+    <Property Name="OwnerLoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ownername" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerPassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="FoodOrderingProjectEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OwnerLoginTbls" EntityType="Self.OwnerLoginTbl" />
+  </EntityContainer>
+</Schema>

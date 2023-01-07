@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FoodOrderingProjectModel4StoreContainer" CdmEntityContainer="FoodOrderingProjectEntitiesOP">
+    <EntitySetMapping Name="OrderTbls">
+      <EntityTypeMapping TypeName="FoodOrderingProjectModel4.OrderTbl">
+        <MappingFragment StoreEntitySet="OrderTbl">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Qnty" ColumnName="Qnty" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
